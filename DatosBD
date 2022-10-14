@@ -1,0 +1,112 @@
+package Modelo;
+
+public class DatosBD {
+
+	private int iddeptno;
+	private String numero;
+	private String nombre;
+	private String locacion;
+	private int idEmpleado;
+    private String NombreEmp;
+    private String ApellidoEmp;
+    private String Job;
+    private String Sal;
+    private String Departamento;
+	
+	public void BatosBD () {
+		this.iddeptno = 0;
+		this.numero="";
+		this.nombre= "";
+		this.locacion="";
+		this.idEmpleado= 0;
+		this.NombreEmp= "";
+		this.ApellidoEmp= "";
+		this.Job="";
+		this.Sal="";
+		this.Departamento= "";
+		
+	}
+	
+
+    public int getIddeptno() {
+        return iddeptno;
+    }
+
+    public void setIddeptno(int iddeptno) {
+        this.iddeptno = iddeptno;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getLocacion() {
+        return locacion;
+    }
+
+    public void setLocacion(String locacion) {
+        this.locacion = locacion;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public String getNombreEmp() {
+        return NombreEmp;
+    }
+
+    public void setNombreEmp(String NombreEmp) {
+        this.NombreEmp = NombreEmp;
+    }
+
+    public String getApellidoEmp() {
+        return ApellidoEmp;
+    }
+
+    public void setApellidoEmp(String ApellidoEmp) {
+        this.ApellidoEmp = ApellidoEmp;
+    }
+
+    public String getJob() {
+        return Job;
+    }
+
+    public void setJob(String job) {
+        this.Job = job;
+    }
+
+    public String getSal () {
+    	return Sal;
+    }
+    
+    public void setSal(String Sal) {
+    	this.Sal = Sal;
+    }
+    
+    public String getDepartamento () {
+    	return Departamento;
+    }
+    
+    public void setDepartamento (String Departamento) {
+    	this.Departamento = Departamento;
+    }
+       
+    
+}

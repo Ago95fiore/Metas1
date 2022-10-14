@@ -114,7 +114,7 @@ public class Ventana2 extends JFrame {
 		table.setBounds(10, 78, 414, 55);
 		contentPane.add(table);
 		
-		JLabel tituloEmp = new JLabel("Emplleados");
+		JLabel tituloEmp = new JLabel("Empleados");
 		tituloEmp.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		tituloEmp.setBounds(181, 23, 70, 17);
 		contentPane.add(tituloEmp);
