@@ -1,0 +1,136 @@
+package Modelo;
+
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+
+public class ModelDatosBD {
+    
+    public ArrayList<DatosBD> getProductos(int iddeptno){
+            
+        Pool conexion = new Pool();
+        Connection conectar=null;
+        PreparedStatement pst;
+        ResultSet rs;
+        DatosBD datosDB;
+        ArrayList list = new ArrayList();
+        
+        try{
+
+            // obtenemos la conexion con la base de datos
+            conectar = conexion.initializeDataSource().getConnection();
+            
+            if(conectar != null){
+                                
+                String sql ="SELECT productos.id, productos.producto, productos.descripcion, productos.precio "
+                        +   "FROM usuarioproducto1 "
+                        +   "INNER JOIN productos ON (usuarioproducto1.id_producto=productos.id) "
+                        +   "INNER JOIN usuarios ON (usuarioproducto1.id_usuario=usuarios.id) "
+                        +   "WHERE usuarios.id=?";
+                
+                pst = conectar.prepareStatement(sql);
+                pst.setInt(1, iddeptno);
+                
+                rs = pst.executeQuery();
+                                
+                while(rs.next()){
+                    
+                    datosDB = new DatosBD();
+                    datosDB.setIddeptno(rs.getInt("id"));
+                    datosDB.setNumero(rs.getString("numero"));
+                    datosDB.setNombre(rs.getString("nombre"));
+                    datosDB.setLocacion(rs.getString("locacion"));
+                    list.add(datosDB);
+
+                }
+                 
+            }else{
+                JOptionPane.showMessageDialog(null, "Hubo un error al realizar la operacion, intente mas tarde","ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+                
+        
+        }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, e , " .::Error En la Operacion::.", JOptionPane.ERROR_MESSAGE);
+        }finally{
+        
+            try{
+                conectar.close();
+            }catch(SQLException ex){
+                System.out.println("error "+ex);
+            }
+        
+        }
+        
+       return list;
+         
+    }    
+   
+
+    public ArrayList<DatosBD> getIdEmpleado(){
+            
+        Pool conexion = new Pool();
+        Connection conectar=null;
+        PreparedStatement pst;
+        ResultSet rs;
+        DatosBD datosDB;
+        ArrayList list = new ArrayList();
+        
+        try{
+
+            // obtenemos la conexion con la base de datos
+            conectar = conexion.initializeDataSource().getConnection();
+            
+            if(conectar != null){
+                                
+                String sql ="SELECT id, nombre, apellido "
+                        +   "FROM usuarios "
+                        +   "WHERE 1";
+                
+                pst = conectar.prepareStatement(sql);                
+                rs = pst.executeQuery();
+                                
+                while(rs.next()){
+                    
+                    datosDB = new DatosBD();
+                    datosDB.setIdEmpleado(rs.getInt("idEmpleado"));
+                    datosDB.setNombreEmp(rs.getString("nombre"));
+                    datosDB.setApellidoEmp(rs.getString("apellido"));
+                    datosDB.setJob(rs.getString("job"));
+                    datosDB.setSal(rs.getString("salario"));
+                    datosDB.setDepartamento(rs.getString("departamento"));
+                  
+                    list.add(datosDB);
+
+                }
+                 
+            }else{
+                JOptionPane.showMessageDialog(null, "Hubo un error al realizar la operacion, intente mas tarde","ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+                
+        
+        }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, e , " .::Error En la Operacion::.", JOptionPane.ERROR_MESSAGE);
+        }finally{
+        
+            try{
+                conectar.close();
+            }catch(SQLException ex){
+                System.out.println("error "+ex);
+            }
+        
+        }
+        
+       return list;
+         
+    }    
+
+    
+    
+
+    
+}
